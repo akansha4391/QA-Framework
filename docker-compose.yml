@@ -9,6 +9,8 @@ services:
       - .:/app
       # Avoid overwriting container's python environment with local venv
       - /app/.venv
+      # Isolate node_modules to prevents OS mismatch (Mac vs Linux) and ensure container uses its own
+      - /app/docs-site/node_modules
     ipc: host # Recommended for Playwright
     ports:
       - "3000:3000" # Expose Documentation Site
