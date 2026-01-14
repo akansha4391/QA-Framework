@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qa-framework"
+version = "0.1.0"
+description = "Enterprise-grade QA Automation Framework Core Library"
+authors = [{name = "QA Team", email = "qa@example.com"}]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "selenium",
+    "playwright",
+    "requests",
+    "pydantic",
+    "pydantic-settings",
+    "allure-pytest",
+    "Faker",
+    "sqlalchemy",
+    "locust",
+    "structlog",
+    "PyYAML",
+    "openpyxl",
+    "typer",
+    "Appium-Python-Client",
+    "axe-core-python",
+    "axe-playwright-python",
+    "Pillow",
+    "python-owasp-zap-v2.4",
+    "beautifulsoup4"
+]
+
+[project.scripts]
+qa-init = "qa_framework.cli:app"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "isort",
+    "mypy",
+    "flake8",
+    "pytest-mock"
+]
+
+[tool.setuptools.packages.find]
+include = ["qa_framework*"]

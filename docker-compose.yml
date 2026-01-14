@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  test-runner:
+    build: .
+    container_name: qa-framework-runner
+    volumes:
+      # Mount current directory to allow code changes to be reflected immediately
+      - .:/app
+      # Avoid overwriting container's python environment with local venv
+      - /app/.venv
+    ipc: host # Recommended for Playwright
+    environment:
+      - BASE_URL=https://www.google.com
+      - HEADLESS=true
+      - BROWSER=chrome
+      - LOG_LEVEL=INFO
+    command: ["-c", "echo 'Container ready. Run `qa-init` or `pytest` here.' && tail -f /dev/null"]

@@ -1,3 +1,32 @@
+Metadata-Version: 2.4
+Name: qa-framework
+Version: 0.1.0
+Summary: Enterprise-grade QA Automation Framework Core Library
+Author-email: QA Team <qa@example.com>
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: selenium
+Requires-Dist: playwright
+Requires-Dist: requests
+Requires-Dist: pydantic
+Requires-Dist: pydantic-settings
+Requires-Dist: allure-pytest
+Requires-Dist: Faker
+Requires-Dist: sqlalchemy
+Requires-Dist: locust
+Requires-Dist: structlog
+Requires-Dist: PyYAML
+Requires-Dist: openpyxl
+Requires-Dist: typer
+Requires-Dist: Appium-Python-Client
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: black; extra == "dev"
+Requires-Dist: isort; extra == "dev"
+Requires-Dist: mypy; extra == "dev"
+Requires-Dist: flake8; extra == "dev"
+Requires-Dist: pytest-mock; extra == "dev"
+
 # Enterprise QA Automation Framework
 
 ## Overview

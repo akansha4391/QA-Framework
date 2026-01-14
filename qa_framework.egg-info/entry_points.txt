@@ -1,0 +1,2 @@
+[console_scripts]
+qa-init = qa_framework.cli:app
