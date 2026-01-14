@@ -11,7 +11,7 @@ services:
       - /app/.venv
     ipc: host # Recommended for Playwright
     ports:
-      - "3000:3000" # Expose Docusaurus
+      - "3000:3000" # Expose Documentation Site
     environment:
       - BASE_URL=https://www.google.com
       - HEADLESS=true
