@@ -64,3 +64,38 @@ class PlaywrightDriver(AbstractDriver):
     def screenshot(self, path: str) -> str:
         self._page.screenshot(path=path)
         return path
+
+    def _parse_selector(self, selector: str) -> str:
+        """
+        Converts framework-specific selectors (id=, css=) to Playwright selectors.
+        """
+        if selector.startswith("id="):
+            return f"id={selector[3:]}" # Playwright actually supports id= engine or we can use #
+            # Better: use CSS ID selector for robustness
+            return f"#{selector[3:]}"
+        elif selector.startswith("css="):
+            return selector[4:]
+        elif selector.startswith("name="):
+            return f"[name='{selector[5:]}']"
+        # XPath usually detected automatically if starts with //
+        return selector
+
+    def find_element(self, selector: str):
+        """
+        Returns a Locator.
+        """
+        parsed_selector = self._parse_selector(selector)
+        return self._page.locator(parsed_selector)
+
+    def click(self, selector: str):
+        parsed_selector = self._parse_selector(selector)
+        self._page.click(parsed_selector)
+
+    def type(self, selector: str, text: str):
+        parsed_selector = self._parse_selector(selector)
+        self._page.fill(parsed_selector, text)
+
+    def get_text(self, selector: str) -> str:
+        parsed_selector = self._parse_selector(selector)
+        return self._page.locator(parsed_selector).inner_text()
+

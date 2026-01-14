@@ -36,3 +36,23 @@ class AbstractDriver(ABC):
     def screenshot(self, path: str) -> str:
         """Takes a screenshot and saves it to the path."""
         pass
+
+    @abstractmethod
+    def find_element(self, selector: str) -> Any:
+        """Finds an element."""
+        pass
+
+    @abstractmethod
+    def click(self, selector: str) -> None:
+        """Clicks an element."""
+        pass
+
+    @abstractmethod
+    def type(self, selector: str, text: str) -> None:
+        """Types text into an element."""
+        pass
+
+    @abstractmethod
+    def get_text(self, selector: str) -> str:
+        """Returns the text content of an element."""
+        pass

@@ -112,3 +112,7 @@ class SeleniumDriver(AbstractDriver):
     def type(self, selector: str, text: str):
         el = self.find_element(selector)
         el.send_keys(text)
+
+    def get_text(self, selector: str) -> str:
+        el = self.find_element(selector)
+        return el.text

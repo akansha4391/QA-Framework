@@ -1,16 +1,32 @@
+import json
+import yaml
+import csv
 import openpyxl
+from typing import Any, Dict, List
+from qa_framework.core.exceptions import DataLoadingError
 
 class DataLoader:
     """
     Utility class to load data from various file formats.
     """
-    @staticmethod
-    def load_json(path: str) -> Any:
+class JSONReader:
+    def __init__(self, path: str):
+        self.path = path
+
+    def read(self) -> Any:
         try:
-            with open(path, 'r') as f:
+            with open(self.path, 'r') as f:
                 return json.load(f)
         except Exception as e:
-            raise DataLoadingError(f"Failed to load JSON from {path}", e)
+            raise DataLoadingError(f"Failed to load JSON from {self.path}", e)
+
+class DataLoader:
+    """
+    Legacy Utility class to load data from various file formats.
+    """
+    @staticmethod
+    def load_json(path: str) -> Any:
+        return JSONReader(path).read()
 
     @staticmethod
     def load_yaml(path: str) -> Any:
