@@ -10,6 +10,8 @@ services:
       # Avoid overwriting container's python environment with local venv
       - /app/.venv
     ipc: host # Recommended for Playwright
+    ports:
+      - "3000:3000" # Expose Docusaurus
     environment:
       - BASE_URL=https://www.google.com
       - HEADLESS=true
