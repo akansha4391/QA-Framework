@@ -2,7 +2,7 @@
 
 # Default values
 TEST_PATH="examples/poc_saucedemo/tests"
-ALLURE_DIR="allure-results"
+ALLURE_DIR="reports/allure-results"
 OPEN_REPORT=false
 
 # Help Function
