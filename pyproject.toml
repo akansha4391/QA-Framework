@@ -28,7 +28,9 @@ dependencies = [
     "axe-playwright-python",
     "Pillow",
     "python-owasp-zap-v2.4",
-    "beautifulsoup4"
+    "python-owasp-zap-v2.4",
+    "beautifulsoup4",
+    "pytest-bdd"
 ]
 
 [project.scripts]
