@@ -129,7 +129,7 @@ def init(
     console.print("\n[bold]Select Project Style:[/bold]")
     console.print("[1] Standard TDD/POM (Recommended)")
     console.print("[2] BDD (Gherkin/Cucumber)")
-    console.print("[3] Robot Framework (Future)")
+    console.print("[3] Robot Framework (Keyword Driven)")
     choice = typer.prompt("Enter number", default="1", show_default=True)
 
     console.print(f"[bold green]Creating project: {project_name}...[/bold green]")
@@ -147,6 +147,8 @@ def init(
     # Conditional Folders
     if choice == "2":
         folders.extend(["tests", "tests/features", "tests/step_defs"])
+    elif choice == "3":
+        folders.extend(["tests", "tests/robot", "keywords"])
     else:
         folders.extend(["tests", "tests/ui", "tests/api"])
 
@@ -165,6 +167,10 @@ def init(
         (base_path / "tests/features/search.feature").write_text(BDD_FEATURE)
         (base_path / "tests/step_defs/test_search.py").write_text(BDD_STEP_DEFS)
         console.print("[blue]ℹ️  Created BDD structure: features/ & step_defs/[/blue]")
+    elif choice == "3":
+        # Robot Setup
+        (base_path / "tests/robot/example.robot").write_text(ROBOT_TEST)
+        console.print("[blue]ℹ️  Created Robot structure: tests/robot/[/blue]")
     else:
         # Standard Setup
         (base_path / "tests/ui/test_demo.py").write_text(DEFAULT_TEST)

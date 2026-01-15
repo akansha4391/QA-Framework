@@ -30,7 +30,8 @@ dependencies = [
     "python-owasp-zap-v2.4",
     "python-owasp-zap-v2.4",
     "beautifulsoup4",
-    "pytest-bdd"
+    "pytest-bdd",
+    "robotframework"
 ]
 
 [project.scripts]
